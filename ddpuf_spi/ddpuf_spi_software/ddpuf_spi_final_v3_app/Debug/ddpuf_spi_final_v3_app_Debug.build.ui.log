@@ -1,0 +1,25 @@
+2025-05-02T01:59:28.012633600255-01:59:28 **** Build of configuration Debug for project ddpuf_spi_final_v3_app ****
+000-make all 
+000-make --no-print-directory pre-build
+000-a9-linaro-pre-build-step
+000-' '
+000-make --no-print-directory main-build
+000-'Building file: ../src/main.c'
+000-'Invoking: ARM v7 gcc compiler'
+000-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/auste/FPGA_Projects/Vitis_workspace/ddpuf_spi_final_v3_platform/export/ddpuf_spi_final_v3_platform/sw/ddpuf_spi_final_v3_platform/standalone_domain/bspinclude/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+000-'Finished building: ../src/main.c'
+000-' '
+000-'Building target: ddpuf_spi_final_v3_app.elf'
+000-'Invoking: ARM v7 gcc linker'
+000-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/Users/auste/FPGA_Projects/Vitis_workspace/ddpuf_spi_final_v3_platform/export/ddpuf_spi_final_v3_platform/sw/ddpuf_spi_final_v3_platform/standalone_domain/bsplib/lib -o "ddpuf_spi_final_v3_app.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+000-'Finished building target: ddpuf_spi_final_v3_app.elf'
+000-' '
+000-'Invoking: ARM v7 Print Size'
+000-arm-none-eabi-size ddpuf_spi_final_v3_app.elf  |tee "ddpuf_spi_final_v3_app.elf.size"
+000-   text	   data	    bss	    dec	    hex	filename
+000-  27597	   1160	  22632	  51389	   c8bd	ddpuf_spi_final_v3_app.elf
+000-'Finished building: ddpuf_spi_final_v3_app.elf.size'
+000-' '
+00255-
+01:59:29 Build Finished (took 1s.107ms)
+
