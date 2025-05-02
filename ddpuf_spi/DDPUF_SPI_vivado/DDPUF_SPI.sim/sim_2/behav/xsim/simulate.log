@@ -1,5 +1,0 @@
-Time resolution is 1 ps
-Starting test...
-Read Reg 0x01: 0xab
-Read Reg 0x02: 0xcd
-$finish called at time : 6025 ns : File "C:/Users/auste/FPGA_Projects/DDPUF_SPI/DDPUF_SPI.srcs/sim_2/new/td_ddpuf_spi.v" Line 131
