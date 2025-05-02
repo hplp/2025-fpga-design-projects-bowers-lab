@@ -60,7 +60,7 @@ module Zynq_CPU_ddpuf_spi_0_0 (
   MOSI,
   MISO,
   SS_N,
-  CLK,
+  CLK_OUT,
   RST_N,
   FSM_Complete,
   Duration,
@@ -72,9 +72,7 @@ input wire SCLK;
 input wire MOSI;
 output wire MISO;
 input wire SS_N;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN Zynq_CPU_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK CLK" *)
-input wire CLK;
+output wire CLK_OUT;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST_N, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST_N RST" *)
 input wire RST_N;
@@ -88,7 +86,7 @@ input wire [127 : 0] PUF_Val;
     .MOSI(MOSI),
     .MISO(MISO),
     .SS_N(SS_N),
-    .CLK(CLK),
+    .CLK_OUT(CLK_OUT),
     .RST_N(RST_N),
     .FSM_Complete(FSM_Complete),
     .Duration(Duration),

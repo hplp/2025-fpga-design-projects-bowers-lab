@@ -1,7 +1,7 @@
 //Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
-//Date        : Thu Apr 17 13:36:02 2025
+//Date        : Thu May  1 19:05:17 2025
 //Host        : austen-legion running 64-bit major release  (build 9200)
 //Command     : generate_target Zynq_CPU.bd
 //Design      : Zynq_CPU
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "Zynq_CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Zynq_CPU,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=4,numReposBlks=4,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "Zynq_CPU.hwdef" *) 
+(* CORE_GENERATION_INFO = "Zynq_CPU,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Zynq_CPU,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=7,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=9,da_ps7_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "Zynq_CPU.hwdef" *) 
 module Zynq_CPU
    (DDR_addr,
     DDR_ba,
@@ -54,7 +54,10 @@ module Zynq_CPU
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
 
-  wire ddpuf_spi_0_MISO;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]Duration;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire FSM_Start;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire ddpuf_spi_0_MISO;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire fsm_0_done;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
   wire processing_system7_0_DDR_CAS_N;
@@ -81,18 +84,27 @@ module Zynq_CPU
   wire processing_system7_0_SPI1_MOSI_O;
   wire processing_system7_0_SPI1_SCLK_O;
   wire processing_system7_0_SPI1_SS_O;
-  wire [0:0]xlconstant_0_dout;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire reset;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire start;
   wire [127:0]xlconstant_1_dout;
 
   Zynq_CPU_ddpuf_spi_0_0 ddpuf_spi_0
-       (.CLK(processing_system7_0_FCLK_CLK0),
-        .FSM_Complete(xlconstant_0_dout),
+       (.Duration(Duration),
+        .FSM_Complete(fsm_0_done),
+        .FSM_Start(FSM_Start),
         .MISO(ddpuf_spi_0_MISO),
         .MOSI(processing_system7_0_SPI1_MOSI_O),
         .PUF_Val(xlconstant_1_dout),
         .RST_N(processing_system7_0_FCLK_RESET0_N),
         .SCLK(processing_system7_0_SPI1_SCLK_O),
         .SS_N(processing_system7_0_SPI1_SS_O));
+  Zynq_CPU_fsm_0_0 fsm_0
+       (.Duration(Duration),
+        .FSM_Start(FSM_Start),
+        .clk(processing_system7_0_FCLK_CLK0),
+        .done(fsm_0_done),
+        .reset(reset),
+        .start(start));
   Zynq_CPU_processing_system7_0_0 processing_system7_0
        (.DDR_Addr(DDR_addr[14:0]),
         .DDR_BankAddr(DDR_ba[2:0]),
@@ -137,8 +149,18 @@ module Zynq_CPU
         .SPI1_SS_I(1'b0),
         .SPI1_SS_O(processing_system7_0_SPI1_SS_O),
         .USB0_VBUS_PWRFAULT(1'b0));
-  Zynq_CPU_xlconstant_0_0 xlconstant_0
-       (.dout(xlconstant_0_dout));
+  Zynq_CPU_system_ila_0_0 system_ila_0
+       (.clk(processing_system7_0_FCLK_CLK0),
+        .probe0(ddpuf_spi_0_MISO),
+        .probe1(start),
+        .probe2(fsm_0_done),
+        .probe3(reset));
+  Zynq_CPU_system_ila_1_1 system_ila_1
+       (.clk(processing_system7_0_FCLK_CLK0),
+        .probe0(Duration));
+  Zynq_CPU_system_ila_5_0 system_ila_5
+       (.clk(processing_system7_0_FCLK_CLK0),
+        .probe0(FSM_Start));
   Zynq_CPU_xlconstant_0_1 xlconstant_1
        (.dout(xlconstant_1_dout));
 endmodule

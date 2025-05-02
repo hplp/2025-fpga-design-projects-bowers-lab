@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../DDPUF_SPI.gen/sources_1/bd/Zynq_CPU/ipshared/ec67/hdl" --include "../../../../DDPUF_SPI.gen/sources_1/bd/Zynq_CPU/ipshared/3007/hdl" --include "C:/Xilinx/Vivado/2021.2/data/xilinx_vip/include" \
+"../../../../DDPUF_SPI.srcs/sources_1/new/ddpuf_spi.v" \
+"../../../../DDPUF_SPI.srcs/sim_2/new/td_ddpuf_spi.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -12,8 +12,11 @@
     },
     "design_tree": {
       "processing_system7_0": "",
-      "xlconstant_0": "",
       "xlconstant_1": "",
+      "system_ila_0": "",
+      "system_ila_5": "",
+      "fsm_0": "",
+      "system_ila_1": "",
       "ddpuf_spi_0": ""
     },
     "interface_ports": {
@@ -1825,12 +1828,6 @@
           }
         }
       },
-      "xlconstant_0": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "Zynq_CPU_xlconstant_0_0",
-        "xci_path": "ip\\Zynq_CPU_xlconstant_0_0\\Zynq_CPU_xlconstant_0_0.xci",
-        "inst_hier_path": "xlconstant_0"
-      },
       "xlconstant_1": {
         "vlnv": "xilinx.com:ip:xlconstant:1.1",
         "xci_name": "Zynq_CPU_xlconstant_0_1",
@@ -1839,6 +1836,118 @@
         "parameters": {
           "CONST_WIDTH": {
             "value": "128"
+          }
+        }
+      },
+      "system_ila_0": {
+        "vlnv": "xilinx.com:ip:system_ila:1.1",
+        "xci_name": "Zynq_CPU_system_ila_0_0",
+        "xci_path": "ip\\Zynq_CPU_system_ila_0_0\\Zynq_CPU_system_ila_0_0.xci",
+        "inst_hier_path": "system_ila_0",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "4096"
+          },
+          "C_MON_TYPE": {
+            "value": "NATIVE"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "4"
+          },
+          "C_PROBE0_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE1_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE2_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE3_TYPE": {
+            "value": "0"
+          }
+        }
+      },
+      "system_ila_5": {
+        "vlnv": "xilinx.com:ip:system_ila:1.1",
+        "xci_name": "Zynq_CPU_system_ila_5_0",
+        "xci_path": "ip\\Zynq_CPU_system_ila_5_0\\Zynq_CPU_system_ila_5_0.xci",
+        "inst_hier_path": "system_ila_5",
+        "parameters": {
+          "C_MON_TYPE": {
+            "value": "NATIVE"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "1"
+          },
+          "C_PROBE0_TYPE": {
+            "value": "0"
+          }
+        }
+      },
+      "fsm_0": {
+        "vlnv": "xilinx.com:module_ref:fsm:1.0",
+        "xci_name": "Zynq_CPU_fsm_0_0",
+        "xci_path": "ip\\Zynq_CPU_fsm_0_0\\Zynq_CPU_fsm_0_0.xci",
+        "inst_hier_path": "fsm_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "fsm",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "1e+08",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "Zynq_CPU_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "FSM_Start": {
+            "direction": "I"
+          },
+          "Duration": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "done": {
+            "direction": "O"
+          },
+          "start": {
+            "direction": "O"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "O"
+          }
+        }
+      },
+      "system_ila_1": {
+        "vlnv": "xilinx.com:ip:system_ila:1.1",
+        "xci_name": "Zynq_CPU_system_ila_1_1",
+        "xci_path": "ip\\Zynq_CPU_system_ila_1_1\\Zynq_CPU_system_ila_1_1.xci",
+        "inst_hier_path": "system_ila_1",
+        "parameters": {
+          "C_MON_TYPE": {
+            "value": "NATIVE"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "1"
+          },
+          "C_PROBE0_TYPE": {
+            "value": "0"
           }
         }
       },
@@ -1865,19 +1974,8 @@
           "SS_N": {
             "direction": "I"
           },
-          "CLK": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "Zynq_CPU_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
+          "CLK_OUT": {
+            "direction": "O"
           },
           "RST_N": {
             "type": "rst",
@@ -1923,17 +2021,74 @@
       }
     },
     "nets": {
+      "Duration": {
+        "ports": [
+          "ddpuf_spi_0/Duration",
+          "fsm_0/Duration",
+          "system_ila_1/probe0"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      },
+      "FSM_Start": {
+        "ports": [
+          "ddpuf_spi_0/FSM_Start",
+          "system_ila_5/probe0",
+          "fsm_0/FSM_Start"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      },
       "ddpuf_spi_0_MISO": {
         "ports": [
           "ddpuf_spi_0/MISO",
-          "processing_system7_0/SPI1_MISO_I"
-        ]
+          "processing_system7_0/SPI1_MISO_I",
+          "system_ila_0/probe0"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      },
+      "fsm_0_done": {
+        "ports": [
+          "fsm_0/done",
+          "system_ila_0/probe2",
+          "ddpuf_spi_0/FSM_Complete"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "processing_system7_0_FCLK_CLK0": {
         "ports": [
           "processing_system7_0/FCLK_CLK0",
           "processing_system7_0/M_AXI_GP0_ACLK",
-          "ddpuf_spi_0/CLK"
+          "system_ila_0/clk",
+          "system_ila_5/clk",
+          "fsm_0/clk",
+          "system_ila_1/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -1960,11 +2115,33 @@
           "ddpuf_spi_0/SS_N"
         ]
       },
-      "xlconstant_0_dout": {
+      "reset": {
         "ports": [
-          "xlconstant_0/dout",
-          "ddpuf_spi_0/FSM_Complete"
-        ]
+          "fsm_0/reset",
+          "system_ila_0/probe3"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      },
+      "start": {
+        "ports": [
+          "fsm_0/start",
+          "system_ila_0/probe1"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "xlconstant_1_dout": {
         "ports": [

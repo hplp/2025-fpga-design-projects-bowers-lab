@@ -7,13 +7,22 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU ||
 # IP: bd/Zynq_CPU/ip/Zynq_CPU_processing_system7_0_0/Zynq_CPU_processing_system7_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_processing_system7_0_0 || ORIG_REF_NAME==Zynq_CPU_processing_system7_0_0} -quiet] -quiet
 
-# IP: bd/Zynq_CPU/ip/Zynq_CPU_ddpuf_spi_0_0/Zynq_CPU_ddpuf_spi_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_ddpuf_spi_0_0 || ORIG_REF_NAME==Zynq_CPU_ddpuf_spi_0_0} -quiet] -quiet
-
-# IP: bd/Zynq_CPU/ip/Zynq_CPU_xlconstant_0_0/Zynq_CPU_xlconstant_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_xlconstant_0_0 || ORIG_REF_NAME==Zynq_CPU_xlconstant_0_0} -quiet] -quiet
-
 # IP: bd/Zynq_CPU/ip/Zynq_CPU_xlconstant_0_1/Zynq_CPU_xlconstant_0_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_xlconstant_0_1 || ORIG_REF_NAME==Zynq_CPU_xlconstant_0_1} -quiet] -quiet
+
+# IP: bd/Zynq_CPU/ip/Zynq_CPU_system_ila_0_0/Zynq_CPU_system_ila_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_system_ila_0_0 || ORIG_REF_NAME==Zynq_CPU_system_ila_0_0} -quiet] -quiet
+
+# IP: bd/Zynq_CPU/ip/Zynq_CPU_system_ila_5_0/Zynq_CPU_system_ila_5_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_system_ila_5_0 || ORIG_REF_NAME==Zynq_CPU_system_ila_5_0} -quiet] -quiet
+
+# IP: bd/Zynq_CPU/ip/Zynq_CPU_fsm_0_0/Zynq_CPU_fsm_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_fsm_0_0 || ORIG_REF_NAME==Zynq_CPU_fsm_0_0} -quiet] -quiet
+
+# IP: bd/Zynq_CPU/ip/Zynq_CPU_system_ila_1_1/Zynq_CPU_system_ila_1_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_system_ila_1_1 || ORIG_REF_NAME==Zynq_CPU_system_ila_1_1} -quiet] -quiet
+
+# IP: bd/Zynq_CPU/ip/Zynq_CPU_ddpuf_spi_0_0/Zynq_CPU_ddpuf_spi_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Zynq_CPU_ddpuf_spi_0_0 || ORIG_REF_NAME==Zynq_CPU_ddpuf_spi_0_0} -quiet] -quiet
 
 # XDC: c:/Users/auste/FPGA_Projects/DDPUF_SPI/DDPUF_SPI.gen/sources_1/bd/Zynq_CPU/Zynq_CPU_ooc.xdc

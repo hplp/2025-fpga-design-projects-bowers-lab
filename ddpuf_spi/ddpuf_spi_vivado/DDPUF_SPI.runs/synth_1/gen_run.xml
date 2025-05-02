@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1744911368" LaunchIncrCheckpoint="$PPRDIR/../ZynqComputer/ZynqComputer.srcs/utils_1/imports/synth_1/Zynq_CPU_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1746143006" LaunchIncrCheckpoint="$PPRDIR/../ZynqComputer/ZynqComputer.srcs/utils_1/imports/synth_1/Zynq_CPU_wrapper.dcp">
   <File Type="PA-TCL" Name="Zynq_CPU_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="Zynq_CPU_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Zynq_CPU_wrapper_reports.tcl"/>
@@ -11,6 +11,13 @@
   <File Type="VDS-TIMING-PB" Name="Zynq_CPU_wrapper_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/fsm.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/ddpuf_spi.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -27,18 +34,18 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PGENDIR/sources_1/bd/Zynq_CPU/hdl/Zynq_CPU_wrapper.v">
+    <File Path="$PSRCDIR/sources_1/imports/Zynq_CPU_wrapper.v">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ZynqComputer/ZynqComputer.gen/sources_1/bd/Zynq_CPU/hdl/Zynq_CPU_wrapper.v"/>
+        <Attr Name="ImportTime" Val="1739482406"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/Zynq_CPU_wrapper.v">
+    <File Path="$PGENDIR/sources_1/bd/Zynq_CPU/hdl/Zynq_CPU_wrapper.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../ZynqComputer/ZynqComputer.gen/sources_1/bd/Zynq_CPU/hdl/Zynq_CPU_wrapper.v"/>
-        <Attr Name="ImportTime" Val="1739482406"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -47,7 +54,6 @@
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="Zynq_CPU_wrapper"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -74,6 +80,8 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="Zynq_CPU_processing_system7_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Zynq_CPU_ddpuf_spi_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Zynq_CPU_system_ila_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Zynq_CPU_fsm_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Zynq_CPU_system_ila_1_1"/>
 </GenRun>
