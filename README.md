@@ -14,8 +14,7 @@ There are many PUF generation techniques, but the DD-PUF is revolutionary in tha
 ## Implementation Details
 1. DD-PUF generator block implementation
 
-The DD-PUF generator block will consist of 128 DD-PUF bit cells. The DD-PUF bit cell is a RTL block written in Verilog. It takes in start and reset signals, and outputs a random 1 or 0 based on a race condition between two latches.
-The DD-PUF generator will generate a 128-bit response, which will be passed to the SPI block. 
+The DD-PUF generator block consists of 128 DD-PUF bit cells. The DD-PUF bit cell is a RTL block written in Verilog. It takes in a start and a reset signal as inputs, and outputs a random 1 or 0 based on a race condition between two latches. The DD-PUF generator will generate a 128-bit response, which will be passed to the SPI block. The complexity of this block lies in the place and routing of the DD-PUFs. This is because the paths between the latches must match such that the output only relies on physical differences. In order to achieve this, a routing script was developed which automatically routes the cells into specific slices in the DD-PUF. This script can be seen in the `apply_dd_puf_constraints.tcl` file. A timing script was also developed in `timing.tcl` to measure the delay difference of the latch/inverter paths. 
 
 2. FSM Design
 
