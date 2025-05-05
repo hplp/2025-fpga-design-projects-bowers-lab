@@ -27,6 +27,8 @@ The DD-PUF generator block consists of 128 DD-PUF bit cells. The DD-PUF bit cell
 The FSM block is a RTL block written in Verilog. It has two outputs: start and reset. These outputs control the duration of the generate signal, or how long a logic high is set to the input of the DD-PUF generator.
 Additionally, the FSM block has a single 16-bit input taken from the SPI block: _duration_. It has a 1-bit input _FSM_START_, that activates the FSM and begins the process of triggering the DD-PUF. It also has a 1-bit output _done_, that tells the SPI block that the DDPUF has stabilized and generated a response.
 
+![FSM Block Diagram](FSM_Diagram.png)
+
 3. SPI Interface
 
 The SPI slave block is a RTL block written in Verilog. It has 4 connections that expose the SPI interface: MOSI, MISO, CS, and SCK. The block is connected to the SPI interface of the Zynq Processing System (PS). The PS sends commands to the MISO pin of the SPI block to set the values of the _duration_ and _start_ registers. The 16-bit _duration_ register are used to set the duration (in clock cycles) of PUF generation.
